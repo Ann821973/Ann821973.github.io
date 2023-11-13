@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Romanticismo</title>
+    <link rel="stylesheet" href="manage.css">
+    <script src="play_in.js"></script>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 7, 29, 0.623);
+        }
+
+        .modal-content {
+            background-color: #001120;
+            margin: 10% auto;
+            padding: 20px;
+            border: 7px solid #000e1f;
+            width: 80%;
+        }
+
+        .close {
+            color: #5e2f85;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: rgb(122, 224, 255);
+            text-decoration: none;
+            cursor: pointer;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <button id="openModalBtn"><b>Info</b></button>
+
+    <div class="modal" id="myModal">
+        <div class="modal-content" id="theboxmodal">
+            <span class="close">&times;</span>
+            <p id="primText">Bienvenidos a <i>El Romanticismo</i>, aquí tienes uno de los dos retos de completar el puzzle (nivel avanzado).
+                En este caso tenemos a la obra <i>Lámina La dama de Shalott de Posterlounge</i>, una de las más representativas de esta época tan magna<br><br></p>
+
+                <p id="questions"><i><big><b>¿Cómo se juega?</b></big></i><br></p>
+
+                <p id="answers">Para resolver el puzzle intercanmbia las fichas con aquella de color violeta
+                arrastrando la imagen a la posición deseada. Para hacerlo, debes tener en
+                cuenta que la ficha que quieres mover debe ser adyacente a aquella
+                dispuesta para moverse (ficha de color violeta).<br></p>
+
+                <p id="questions"><br><i><big><b>¿Dónde está la imagen original?</b></big></i><br></p>
+
+                <p id="answers">Para poder ver la imagen original de puzzle, debes dar click en el botón
+                "Pistas", solo puedes abrirla una vez y permanecerá ahí, no la puedes cerrar.
+                Ahí también encontraras un pequeño texto con más pistas.</p>
+            
+                <p id="questions"><br><i><big><b>¿Para qué sirve el contador de abajo?</b></big></i><br></p>
+
+                <p id="answers">Su función es contar la cantidad de movimientos que realizas hasta terminar el puzzle
+                ¡Trata de resolverlo en la cantida mínima de movimientos y mejora tu record!<br></p>
+                
+                <p id="finalText"><br><strong><big>Qué esperas para jugar!! ----></big></strong><br>
+                <small><i>Postdata: Puedes abrir este cuadro de texto cuantas veces quieras</i></small></p>
+    
+        </div>
+    </div>
+
+    <script>
+        // Obtén la referencia del modal y el botón para cerrarlo
+        var modal = document.getElementById('myModal');
+        var btn = document.getElementById('openModalBtn');
+        var span = document.getElementsByClassName('close')[0];
+
+        // Cuando el usuario hace clic en el botón, abre el modal
+        btn.onclick = function() {
+            modal.style.display = 'block';
+        }
+
+        // Cuando el usuario hace clic en (x), cierra el modal
+        span.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        // Cuando el usuario hace clic fuera del modal, también se cierra
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+
+    <style>
+        #menu-container {
+        display: none;
+        position: absolute;
+        background-color: #cde8ff;
+        box-shadow: 0 2px 5px rgb(0, 18, 44);
+        padding: 10px;
+        }
+
+        button:disabled {
+        cursor: not-allowed;
+        }
+        #menu-container img {
+        width: 100%; /* Escala la imagen al 100% del ancho del contenedor */
+        height: auto; /* Mantiene la proporción de la imagen */
+        max-width: 300px; /* Establece un ancho máximo para la imagen */
+        }
+
+        #cerrarBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    </style>
+    </head>
+    <body>
+
+    <button id="mostrarBtn" onclick="mostrarMenu()" >Pistas</button>
+    <div id="menu-container">
+    <img src="puzzleimage.png" alt="Imagen">
+    <p><b>Pista:</b> Desarrolla el Puzzle de abajo para arriba y de izquierda <br>a deracha, para mayor facilidad.<br> <b>Pista:</b> Busca las piezas menos detalladas e identifica cada una</p>
+    </div>
+
+    <script>
+        
+    function mostrarMenu() {
+        document.getElementById('menu-container').style.display = 'block';
+        document.getElementById('mostrarBtn').disabled = false;
+    }
+    function cerrarMenu() {
+    document.getElementById('mostrarBtn').checked = false;
+  }
+    </script>
+
+    
+
+</body>
+
+</html>
+
+<body>
+    <img id="tittle" src="t%C3%ADtuloh.png">
+    <div id="tablero"></div>
+    <h1>Turns: <span id="turns">0</span> </h1>
+</body>
